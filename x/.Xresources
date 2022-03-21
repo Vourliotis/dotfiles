@@ -1,0 +1,54 @@
+! Background + Foreground
+! *background: #363537
+! *foreground: #f7f1ff
+
+! Black + Dark Grey
+! *color0:  #363537
+! *color8:  #69676c
+
+! Dark Red + Red
+! *color1:  #fc618d
+! *color9:  #fc618d
+
+! Dark Green + Green
+! *color2:  #7bd88f
+! *color10: #7bd88f
+
+! Dark Yellow + Yellow
+! *color3:  #fce566
+! *color11: #fce566
+
+! Dark Blue + Blue
+! *color4:  #fd9353
+! *color12: #fd9353
+
+! Dark Magenta + Magenta
+! *color5:  #948ae3
+! *color13: #948ae3
+
+! Dark Cyan + Cyan
+! *color6:  #5ad4e6
+! *color14: #5ad4e6
+
+! Light Grey + White
+! *color7:  #f7f1ff
+! *color15: #f7f1ff
+
+*background: #191919
+*foreground: #c4c4b5
+*color0: #191919
+*color8: #615e4b
+*color1: #f3005f
+*color9: #f3005f
+*color2: #97e023
+*color10: #97e023
+*color3: #fa8419
+*color11: #dfd561
+*color4: #9c64fe
+*color12: #9c64fe
+*color5: #f3005f
+*color13: #f3005f
+*color6: #57d1ea
+*color14: #57d1ea
+*color7: #c4c4b5
+*color15: #f6f6ee
