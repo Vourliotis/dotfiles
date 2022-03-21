@@ -1,0 +1,112 @@
+#! /bin/sh
+
+# Get colors grom .Xresources
+xrdb ~/.Xresources
+getcolors () {
+	FOREGROUND=$(xrdb -query | grep 'foreground:'| awk '{print $NF}')
+	BACKGROUND=$(xrdb -query | grep 'background:'| awk '{print $NF}')
+	BLACK=$(xrdb -query | grep 'color0:'| awk '{print $NF}')
+	GREY=$(xrdb -query | grep 'color8:'| awk '{print $NF}')
+	DARKRED=$(xrdb -query | grep 'color1:'| awk '{print $NF}')
+	RED=$(xrdb -query | grep 'color9:'| awk '{print $NF}')
+	DARKGREEN=$(xrdb -query | grep 'color2:'| awk '{print $NF}')
+	GREEN=$(xrdb -query | grep 'color10:'| awk '{print $NF}')
+	DARKYELLOW=$(xrdb -query | grep 'color3:'| awk '{print $NF}')
+	YELLOW=$(xrdb -query | grep 'color11:'| awk '{print $NF}')
+	DARKBLUE=$(xrdb -query | grep 'color4:'| awk '{print $NF}')
+	BLUE=$(xrdb -query | grep 'color12:'| awk '{print $NF}')
+	DARKMAGENTA=$(xrdb -query | grep 'color5:'| awk '{print $NF}')
+	MAGENTA=$(xrdb -query | grep 'color13:'| awk '{print $NF}')
+	DARKCYAN=$(xrdb -query | grep 'color6:'| awk '{print $NF}')
+	CYAN=$(xrdb -query | grep 'color14:'| awk '{print $NF}')
+	LIGHTWHITE=$(xrdb -query | grep 'color7:'| awk '{print $NF}')
+	WHITE=$(xrdb -query | grep 'color15:'| awk '{print $NF}')
+}
+getcolors
+
+# Configuration
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+# Set display from arandr saved script
+# sh ~/.screenlayout/monitor.sh &
+autorandr -c
+
+#Get Monitors
+PRINCIPAL=$(xrandr | grep primary | awk '{print $1}')
+SECOND_MONITOR=$(xrandr | grep "\bconnected\b" | awk '{i++}i==3'| awk '{print $1}')
+THIRD_MONITOR=$(xrandr | grep "\bconnected\b" | awk '{i++}i==1'| awk '{print $1}')
+
+# Configure Monitors
+if [ "$(xrandr | grep -sw "\bconnected\b" | wc -l)" = "3" ]; then
+  bspc monitor $PRINCIPAL -d I II III
+  bspc monitor $SECOND_MONITOR -d IV V VI
+  bspc monitor $THIRD_MONITOR -d VII VIII IX X
+  # Set Monitors Side and output 
+  bspc wm -O $PRINCIPAL $SECOND_MONITOR $THIRD_MONITOR
+elif [ "$(xrandr | grep -sw 'connected' | wc -l)" = "2" ]; then
+  bspc monitor $PRINCIPAL -d I II III IV V
+  bspc monitor $SECOND_MONITOR -d VI VII VIII IX X
+  # Set Monitors Side and output 
+  xrandr --output $SECOND_MONITOR --$SECOND_MONITOR_SIDE-of $PRINCIPAL  
+  bspc wm -O $PRINCIPAL $SECOND_MONITOR
+else
+  bspc monitor -d I II III IV V VI VII VIII IX X 
+fi
+
+bspc config border_width         1
+bspc config window_gap          12
+
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+bspc config pointer_follows_focus false
+bspc config focus_follows_pointer true
+
+bspc rule -a Code desktop='^3' follow=on
+bspc rule -a Enpass state=floating
+bspc rule -a Pavucontrol state=floating
+bspc rule -a Peek state=floating
+bspc rule -a mpv state=floating
+bspc rule -a Yad state=floating
+bspc rule -a Org.gnome.Nautilus state=floating
+bspc rule -a Blueman-manager state=floating
+
+# Border
+bspc config focused_border_color        "$YELLOW"
+bspc config normal_border_color         "$BACKGROUND"
+bspc config active_border_color         "$BACKGROUND"
+
+# Autostart
+
+# Bar
+~/.config/polybar/launch.sh &
+# Picom
+killall picom
+picom --experimental-backends --config $HOME/.config/picom/picom.conf &
+# Keyring
+eval $(/usr/bin/gnome-keyring-daemon --start)
+export SSH_AUTH_SOCK
+# Notifications
+killall dunst
+/usr/bin/dunst &
+# Wallpaper
+killall nitrogen
+nitrogen --restore &
+# Dex
+killall dex
+dex -a -s /etc/xdg/autostart/:~/.config/autostart/  
+# Network Applet
+killall nm-applet
+nm-applet --indicator &
+# Keyboard layouts
+setxkbmap -layout us,gr -option grp:toggle
+# Cursor
+xsetroot -cursor_name left_ptr &
+# Numlock on
+numlockx on &
+# Disable screen blanking
+xset -dpms s off
+# Flameshot
+killall flameshot
+flameshot &
