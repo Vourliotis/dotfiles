@@ -34,14 +34,14 @@ autorandr -c
 
 #Get Monitors
 PRINCIPAL=$(xrandr | grep primary | awk '{print $1}')
-SECOND_MONITOR=$(xrandr | grep "\bconnected\b" | awk '{i++}i==3'| awk '{print $1}')
-THIRD_MONITOR=$(xrandr | grep "\bconnected\b" | awk '{i++}i==1'| awk '{print $1}')
+SECOND_MONITOR=$(xrandr | grep -v primary | grep "\bconnected\b" | sort | awk '{i++}i==1'| awk '{print $1}')
+THIRD_MONITOR=$(xrandr | grep -v primary | grep "\bconnected\b" | sort | awk '{i++}i==2'| awk '{print $1}')
 
 # Configure Monitors
 if [ "$(xrandr | grep -sw "\bconnected\b" | wc -l)" = "3" ]; then
-  bspc monitor $PRINCIPAL -d I II III
-  bspc monitor $SECOND_MONITOR -d IV V VI
-  bspc monitor $THIRD_MONITOR -d VII VIII IX X
+  bspc monitor $PRINCIPAL -d I II III IV
+  bspc monitor $SECOND_MONITOR -d V VI VII
+  bspc monitor $THIRD_MONITOR -d VIII IX X
   # Set Monitors Side and output 
   bspc wm -O $PRINCIPAL $SECOND_MONITOR $THIRD_MONITOR
 elif [ "$(xrandr | grep -sw 'connected' | wc -l)" = "2" ]; then
