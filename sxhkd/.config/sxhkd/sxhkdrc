@@ -37,9 +37,7 @@ Print
   ~/.config/bspwm/scripts/screenshot.sh
 
 super + d
-	rofi -modi drun -show run -line-padding 4 \
-       -columns 2 -padding 50 -hide-scrollbar -terminal kitty \
-       -font "FiraCode Nerd Font Regular 10"
+	rofi -modi drun -show run -terminal kitty
 
 super + alt + e
   ~/.config/rofi/powermenu.sh
