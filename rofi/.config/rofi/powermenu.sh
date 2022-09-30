@@ -1,13 +1,12 @@
 #!/bin/env bash
 
-# Options for powermenu
+# Options for the powermenu
 lock="    Lock"
 logout="    Logout"
 shutdown="    Shutdown"
 reboot="    Reboot"
 sleep="    Sleep"
 
-# Get answer from user via rofi
 selected_option=$(echo "$lock
 $logout
 $sleep
@@ -15,7 +14,7 @@ $reboot
 $shutdown" | rofi -dmenu\
                   -i\
                   -p "Power"\
-                  -config "~/.config/rofi/powermenu.rasi"\
+                  -config "~/.config/rofi/config.rasi"\
                   -font "FiraCode Nerd Font 12"\
                   -width "15"\
                   -lines 5\
@@ -23,7 +22,6 @@ $shutdown" | rofi -dmenu\
                   -line-padding 10\
                   -scrollbar-width "0" )
 
-# Do something based on selected option
 if [ "$selected_option" == "$lock" ]
 then
     i3lock --color=000000
@@ -43,4 +41,3 @@ then
 else
     echo "No match"
 fi
-
