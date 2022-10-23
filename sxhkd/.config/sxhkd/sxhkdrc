@@ -34,7 +34,11 @@ super + Escape
 
 # Lock screen
 super + ctrl + l
-  dunstctl set-paused true; i3lock --color=000000 -n; dunstctl set-paused false
+  pactl set-sink-mute @DEFAULT_SINK@ true; \
+  dunstctl set-paused true; \
+  i3lock --color=000000 -n; \
+  pactl set-sink-mute @DEFAULT_SINK@ false; \
+  dunstctl set-paused false
 
 # Reload sxhkd
 super + t
