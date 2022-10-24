@@ -1,5 +1,11 @@
 #! /bin/sh
 
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+# Set display from arandr saved script
+# sh ~/.screenlayout/monitor.sh &
+autorandr -c
+
 # Get colors grom .Xresources
 xrdb ~/.Xresources
 getcolors () {
@@ -22,15 +28,8 @@ getcolors () {
 	LIGHTWHITE=$(xrdb -query | grep 'color7:'| awk '{print $NF}')
 	WHITE=$(xrdb -query | grep 'color15:'| awk '{print $NF}')
 }
+
 getcolors
-
-# Configuration
-
-pgrep -x sxhkd > /dev/null || sxhkd &
-
-# Set display from arandr saved script
-# sh ~/.screenlayout/monitor.sh &
-autorandr -c
 
 #Get Monitors
 PRINCIPAL=$(xrandr | grep primary | awk '{print $1}')
