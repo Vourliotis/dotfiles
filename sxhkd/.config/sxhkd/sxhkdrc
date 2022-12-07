@@ -30,7 +30,7 @@ super + d
 	rofi -modi drun -show run -terminal kitty
 
 super + Escape
-  ~/.config/rofi/powermenu.sh
+  ~/.config/rofi/scripts/powermenu.sh
 
 # Lock screen
 super + ctrl + l
