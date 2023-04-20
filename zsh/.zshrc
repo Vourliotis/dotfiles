@@ -14,8 +14,10 @@ compinit
 
 # Source
 source ~/.xprofile
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh_aliases
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
 
 # Ruby
 export PATH="$HOME/.rbenv/bin:$PATH"
