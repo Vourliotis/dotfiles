@@ -1,0 +1,5 @@
+require('core.variables')
+require('core.error_handling')
+require('core.keybindings')
+require('core.options')
+require('core.signals')
