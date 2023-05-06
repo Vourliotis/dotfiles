@@ -71,7 +71,7 @@ theme.battery_empty = config_path .. 'assets/battery/battery_empty.png'
 theme.battery_quarter = config_path .. 'assets/battery/battery_quarter.png'
 theme.battery_half = config_path .. 'assets/battery/battery_half.png'
 theme.battery_three_quarters = config_path .. 'assets/battery/battery_three_quarters.png'
-theme.battery_full = config_path .. 'assets/battery/battery_full'
+theme.battery_full = config_path .. 'assets/battery/battery_full.png'
 
 theme.keyboard = config_path .. 'assets/lang/keyboard.png'
 
