@@ -10,7 +10,7 @@ theme.wallpaper = config_path .. 'wallpapers/' .. WALLPAPER
 theme.icon_theme = nil
 theme.systray_icon_spacing = dpi(1)
 theme.rounded = dpi(8)
-theme.useless_gap = dpi(4)
+theme.useless_gap = dpi(0)
 theme.bar_height = dpi(26)
 
 theme.bg_normal = colors.background
