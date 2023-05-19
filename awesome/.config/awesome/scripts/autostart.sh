@@ -22,3 +22,5 @@ run nm-applet --indicator &
 run flameshot &
 # pasystray
 run pasystray &
+# WARP
+run cf-warp-tray &
