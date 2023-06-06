@@ -1,3 +1,5 @@
+local dpi = require('beautiful.xresources').apply_dpi
+
 local date = WIBOX.widget({
   {
     fg = BEAUTIFUL.blue,
@@ -42,7 +44,7 @@ local function initialize_calendar(screen)
     placement = function(d)
       return AWFUL.placement.top(d, {
         margins = {
-          top = BEAUTIFUL.bar_height + BEAUTIFUL.useless_gap,
+          top = BEAUTIFUL.bar_height + dpi(5),
         },
       })
     end,
