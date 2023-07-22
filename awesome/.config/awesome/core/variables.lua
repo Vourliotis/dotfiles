@@ -12,7 +12,7 @@ NAUGHTY = require('naughty')
 THEME = 'default'
 
 -- Wallpaper name
-WALLPAPER = 'initial_d_simpsons.png'
+WALLPAPER = 'pokemon_koi.png'
 
 -- Theme handling library
 BEAUTIFUL = require('beautiful')
