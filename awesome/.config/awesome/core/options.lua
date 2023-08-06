@@ -42,7 +42,7 @@ AWFUL.rules.rules = {
         'Arandr',
         'Blueman-manager',
         'Org.gnome.Nautilus',
-        'Enpass',
+        '1Password',
         'Pavucontrol',
         'Gnome-calculator',
         'libreoffice-calc',

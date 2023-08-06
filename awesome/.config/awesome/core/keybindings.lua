@@ -43,10 +43,10 @@ GLOBAL_KEYS = GEARS.table.join(
     AWFUL.spawn.with_shell('slack')
   end, { description = 'run slack', group = 'launcher' }),
 
-  -- Run Enpass
+  -- Run 1Password
   AWFUL.key({ MOD_KEY }, 'p', function()
-    AWFUL.spawn.with_shell('enpass')
-  end, { description = 'run enpass', group = 'launcher' }),
+    AWFUL.spawn.with_shell('1password')
+  end, { description = 'run 1password', group = 'launcher' }),
 
   -- Run Nautilus
   AWFUL.key({ MOD_KEY }, 'n', function()
