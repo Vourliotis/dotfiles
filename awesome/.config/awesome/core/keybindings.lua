@@ -14,8 +14,8 @@ GLOBAL_KEYS = GEARS.table.join(
   end, { description = 'show help', group = 'awesome' }),
 
   -- Core keybindings
-  AWFUL.key({ MOD_KEY, ALT }, 'r', awesome.restart, { description = 'reload awesome', group = 'awesome' }),
-  AWFUL.key({ MOD_KEY, ALT }, 'q', awesome.quit, { description = 'quit awesome', group = 'awesome' }),
+  AWFUL.key({ MOD_KEY, 'Control' }, 'r', awesome.restart, { description = 'reload awesome', group = 'awesome' }),
+  AWFUL.key({ MOD_KEY, 'Control' }, 'q', awesome.quit, { description = 'quit awesome', group = 'awesome' }),
 
   -- Program keybindings
   -- Terminal
