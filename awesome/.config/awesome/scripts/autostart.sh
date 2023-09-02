@@ -20,7 +20,5 @@ run dex -a -s /etc/xdg/autostart/:~/.config/autostart/
 run nm-applet --indicator &
 # Flameshot
 run flameshot &
-# pasystray
-run pasystray &
 # WARP
 run cf-warp-tray &

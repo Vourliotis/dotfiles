@@ -5,6 +5,7 @@ local widgets = {
   date = require('ui.modules.date'),
   battery = require('ui.modules.battery'),
   brightness = require('ui.modules.brightness'),
+  volume = require('ui.modules.volume'),
 }
 
 AWFUL.screen.connect_for_each_screen(function(s)
@@ -33,6 +34,7 @@ AWFUL.screen.connect_for_each_screen(function(s)
       {
         -- Right widgets
         layout = WIBOX.layout.fixed.horizontal,
+        HELPERS.widget_margin(widgets.volume, 4),
         HELPERS.widget_margin(widgets.brightness, 4),
         HELPERS.horizontal_pad(5),
         HELPERS.widget_margin(widgets.battery, 1),
