@@ -13,21 +13,12 @@ selected_option=$(
   )
 
 if [ "$selected_option" == "$lock" ]; then
-  LAYOUT=$(setxkbmap -query | grep layout | awk -F": " '{print $2}')
-  OPTIONS=$(setxkbmap -query | grep options | awk -F": " '{print $2}')
-
-  # Set the keyboard layout to US, without changing other options
-  setxkbmap -layout us -option "$OPTIONS"
-
   pactl set-sink-mute @DEFAULT_SINK@ true
   if [ $GDMSESSION == 'bspwm' ]; then
     dunstctl set-paused true
   fi
 
   i3lock --color=000000 -n
-
-  # Restore the original layout and options
-  setxkbmap -layout "$LAYOUT" -option "$OPTIONS"
 
   pactl set-sink-mute @DEFAULT_SINK@ false
   if [ $GDMSESSION == 'bspwm' ]; then
