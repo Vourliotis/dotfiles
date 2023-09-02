@@ -77,6 +77,11 @@ theme.brightness_low = config_path .. 'assets/brightness/brightness_low.svg'
 theme.brightness_medium = config_path .. 'assets/brightness/brightness_medium.svg'
 theme.brightness_high = config_path .. 'assets/brightness/brightness_high.svg'
 
+theme.volume_mute = config_path .. 'assets/volume/volume_mute.svg'
+theme.volume_low = config_path .. 'assets/volume/volume_low.svg'
+theme.volume_medium = config_path .. 'assets/volume/volume_medium.svg'
+theme.volume_high = config_path .. 'assets/volume/volume_high.svg'
+
 theme.keyboard = config_path .. 'assets/lang/keyboard.png'
 
 return theme
