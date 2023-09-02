@@ -73,6 +73,10 @@ theme.battery_half = config_path .. 'assets/battery/battery_half.png'
 theme.battery_three_quarters = config_path .. 'assets/battery/battery_three_quarters.png'
 theme.battery_full = config_path .. 'assets/battery/battery_full.png'
 
+theme.brightness_low = config_path .. 'assets/brightness/brightness_low.svg'
+theme.brightness_medium = config_path .. 'assets/brightness/brightness_medium.svg'
+theme.brightness_high = config_path .. 'assets/brightness/brightness_high.svg'
+
 theme.keyboard = config_path .. 'assets/lang/keyboard.png'
 
 return theme
