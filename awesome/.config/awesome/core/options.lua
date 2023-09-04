@@ -46,6 +46,7 @@ AWFUL.rules.rules = {
         'Pavucontrol',
         'Gnome-calculator',
         'libreoffice-calc',
+        'Cloudflare WARP'
       },
       name = {},
       role = {
