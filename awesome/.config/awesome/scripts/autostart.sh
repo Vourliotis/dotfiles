@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
 function run {
-  if ! pgrep -f $1 ;
+  local process="$1"
+  shift
+  if [ -n "$process" ] && ! pgrep -f "$process" >/dev/null ;
   then
-    $@&
+    "$process" "$@"&
   fi
 }
 
@@ -22,3 +24,5 @@ run nm-applet --indicator &
 run flameshot &
 # WARP
 run cf-warp-tray &
+# Keyboard layout toggle
+run "inputplug" ./keyboard_layout_toggle.sh
