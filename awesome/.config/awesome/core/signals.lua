@@ -21,6 +21,15 @@ client.connect_signal('manage', function(c)
     -- Prevent clients from being unreachable after screen count changes
     AWFUL.placement.no_offscreen(c)
   end
+
+  if c.floating or AWFUL.layout.get(c.screen) == AWFUL.layout.suit.floating then
+    local screen_geometry = c.screen.workarea
+
+    c:geometry({
+      x = screen_geometry.x + (screen_geometry.width - c.width) / 2,
+      y = screen_geometry.y + (screen_geometry.height - c.height) / 2,
+    })
+  end
 end)
 
 -- Add a titlebar if titlebars_enabled is set to true in the rules
