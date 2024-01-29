@@ -1,11 +1,11 @@
 #!/bin/env bash
 
 # Options for the powermenu
-lock="    Lock"
-logout="    Logout"
-shutdown="    Shutdown"
-reboot="    Reboot"
-sleep="    Sleep"
+lock=" Lock"
+logout=" Logout"
+shutdown=" Shutdown"
+reboot=" Reboot"
+sleep=" Sleep"
 
 selected_option=$(
   echo -e "$lock\n$logout\n$sleep\n$reboot\n$shutdown" |
