@@ -39,21 +39,15 @@ local function volume()
       end
     end,
     set_widget_attributes = function(self)
-      local shell_command =
-        [[pacmd list-sinks | grep -A 20 '* index:' | grep -E 'muted:|volume:' | awk -F'[%: ]+' 'NR == 1 {print $5} NR == 3 {print $2}']]
+      local mute_command = "pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}' | tr -d '\n'"
+      local volume_command = "pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}' | tr -d '%'"
 
-      AWFUL.spawn.easy_async('sh -c "' .. shell_command .. '"', function(stdout)
-        local lines = {}
+      AWFUL.spawn.easy_async('sh -c "' .. mute_command .. '"', function(stdout)
+        self.muted = (stdout:match("^%s*(.-)%s*$") == 'yes')
+      end)
 
-        for line in stdout:gmatch('[^\r\n]+') do
-          table.insert(lines, line)
-        end
-
-        local volume_percentage = tonumber(lines[1])
-        local mute = lines[2]
-
-        self.muted = (mute == 'yes')
-        self:set_value(volume_percentage)
+      AWFUL.spawn.easy_async('sh -c "' .. volume_command .. '"', function(stdout)
+        self:set_value(tonumber(stdout))
       end)
     end,
   })
