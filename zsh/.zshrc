@@ -34,6 +34,10 @@ export NVM_DIR="$HOME/.nvm"
 # Starship prompt
 eval "$(starship init zsh)"
 
+# Tmuxifier
+export PATH="$HOME/.tmux/plugins/tmuxifier/bin:$PATH"
+eval "$(tmuxifier init -)"
+
 # Disable Spring
 export DISABLE_SPRING=true
 export BG_MIGRATIONS=true
