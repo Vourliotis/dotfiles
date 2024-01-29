@@ -41,7 +41,7 @@ AWFUL.rules.rules = {
       class = {
         'Arandr',
         'Blueman-manager',
-        'Org.gnome.Nautilus',
+        'org.gnome.Nautilus',
         '1Password',
         'Pavucontrol',
         'Gnome-calculator',
