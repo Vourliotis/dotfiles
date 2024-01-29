@@ -44,7 +44,6 @@ AWFUL.screen.connect_for_each_screen(function(s)
         HELPERS.widget_margin(WIBOX.widget.systray(), 3),
         HELPERS.horizontal_pad(5),
         widgets.power,
-        HELPERS.horizontal_pad(10),
       },
     },
     {
