@@ -15,6 +15,7 @@ compinit
 # Source
 source ~/.xprofile
 source ~/.zsh_aliases
+source ~/.zsh_env
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
