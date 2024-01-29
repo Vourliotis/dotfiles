@@ -1,9 +1,9 @@
 local power_button = WIBOX.widget({
   {
     {
-      text = '⏻',
+      text = ' ',
       widget = WIBOX.widget.textbox,
-      font = BEAUTIFUL.font .. ' 19',
+      font = BEAUTIFUL.font .. ' 14',
     },
     top = 0,
     bottom = 0,
