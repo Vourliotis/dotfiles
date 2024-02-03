@@ -9,7 +9,8 @@ theme.font = 'FiraCode Nerd Font 10'
 theme.icon_theme = nil
 theme.systray_icon_spacing = dpi(1)
 theme.rounded = dpi(8)
-theme.useless_gap = dpi(1)
+theme.useless_gap = dpi(3)
+theme.gap_single_client = true
 theme.bar_height = dpi(26)
 
 theme.bg_normal = colors.background
