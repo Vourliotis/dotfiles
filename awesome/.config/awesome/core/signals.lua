@@ -98,4 +98,6 @@ client.connect_signal('property::floating', function(c)
 end)
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
-screen.connect_signal('property::geometry', HELPERS.set_wallpaper)
+screen.connect_signal('property::geometry', function()
+  AWFUL.spawn.with_shell('nitrogen --restore --set-scaled')
+end)
