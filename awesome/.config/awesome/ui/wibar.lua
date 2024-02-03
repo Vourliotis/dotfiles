@@ -10,7 +10,7 @@ local widgets = {
 
 AWFUL.screen.connect_for_each_screen(function(s)
   -- Set wallpaper when connecting a screen
-  HELPERS.set_wallpaper(s)
+  AWFUL.spawn.with_shell('nitrogen --restore --set-scaled')
 
   -- Each screen has its own tag table.
   AWFUL.tag({ '1', '2', '3', '4', '5', '6', '7', '8', '9' }, s, AWFUL.layout.layouts[1])

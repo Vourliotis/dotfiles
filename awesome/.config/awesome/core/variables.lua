@@ -11,9 +11,6 @@ NAUGHTY = require('naughty')
 -- Theme name
 THEME = 'default'
 
--- Wallpaper name
-WALLPAPER = 'pokemon_koi.png'
-
 -- Theme handling library
 BEAUTIFUL = require('beautiful')
 DPI = BEAUTIFUL.xresources.apply_dpi
