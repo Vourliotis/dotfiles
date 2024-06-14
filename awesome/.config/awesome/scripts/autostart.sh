@@ -13,9 +13,12 @@ function run {
 run autorandr -c
 # Picom
 run picom --experimental-backends --config $HOME/.config/picom/picom.conf &
-# Keyring
-run eval $(/usr/bin/gnome-keyring-daemon --start)
-run export SSH_AUTH_SOCK
+# Start GNOME Keyring Daemon and set environment variables
+eval $(/usr/bin/gnome-keyring-daemon --start)
+# Export SSH authentication socket
+export SSH_AUTH_SOCK
+# Add SSH private key to the authentication agent
+run ssh-add ~/.ssh/id_rsa
 # Dex
 run dex -a -s /etc/xdg/autostart/:~/.config/autostart/  
 # Network Applet
