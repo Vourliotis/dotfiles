@@ -55,7 +55,7 @@ GLOBAL_KEYS = GEARS.table.join(
 
   -- Print Screen
   AWFUL.key({}, 'Print', function()
-    AWFUL.spawn.with_shell('~/.config/bspwm/scripts/screenshot.sh')
+    AWFUL.spawn.with_shell('~/.config/rofi/scripts/screenshot.sh')
   end, { description = 'print screen', group = 'awesome' }),
 
   -- Resize
