@@ -20,7 +20,7 @@ GLOBAL_KEYS = GEARS.table.join(
   -- Program keybindings
   -- Terminal
   AWFUL.key({ MOD_KEY }, 'Return', function()
-    AWFUL.spawn('alacritty')
+    AWFUL.spawn('ghostty')
   end, { description = 'terminal', group = 'launcher' }),
 
   -- Powermenu
@@ -30,7 +30,7 @@ GLOBAL_KEYS = GEARS.table.join(
 
   -- Run prompt
   AWFUL.key({ MOD_KEY }, 'r', function()
-    AWFUL.spawn.with_shell('rofi -modi drun -show run -terminal alacritty')
+    AWFUL.spawn.with_shell('rofi -modi drun -show run -terminal ghostty')
   end, { description = 'run prompt', group = 'launcher' }),
 
   -- Run Chrome
