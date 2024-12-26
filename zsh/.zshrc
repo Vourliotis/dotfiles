@@ -1,22 +1,13 @@
-# Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 setopt autocd extendedglob nomatch notify
 bindkey -v
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
 zstyle :compinstall filename '/home/xvourliotis/.zshrc'
-
 autoload -Uz compinit
 compinit
-# End of lines added by compinstall
 
-# Source
-source ~/.xprofile
-source ~/.zsh_aliases
-source ~/.zsh_env
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+# Sources
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
 
@@ -28,17 +19,23 @@ eval "$(rbenv init - zsh)"
 export PATH=$PATH:/usr/local/go/bin
 
 # nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 # Starship prompt
 eval "$(starship init zsh)"
 
-# Tmuxifier
-export PATH="$HOME/.tmux/plugins/tmuxifier/bin:$PATH"
-eval "$(tmuxifier init -)"
-
-# Disable Spring
-export DISABLE_SPRING=true
-export BG_MIGRATIONS=true
+# Aliases
+alias ls='eza'
+alias ll='eza -l'
+alias la='eza -la'
+alias lt='eza --tree'
+alias l='eza -F'
+alias vimconf='cd ~/.config/nvim'
+alias gb='git branch'
+alias gca='git commit --amend --no-edit --allow-empty-message'
+alias gs='git status'
+alias gfr='git fetch origin --prune && git reset --hard @{u} && git clean -f -d'
+alias fix='git commit --fixup'
+alias chbr='git checkout $(git branch | fzf --height 40% --layout reverse | rt -d "*[:space:]|+[:space:]")'
+alias lg='lazygit'
