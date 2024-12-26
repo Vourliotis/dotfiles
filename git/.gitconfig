@@ -1,0 +1,28 @@
+[user]
+  email = x.vourliotis@gmail.com
+  name = Xenofon Vourliotis
+[core]
+  editor = nvim
+[init]
+  defaultBranch = main
+[pull]
+  rebase = true
+[push]
+  default = current
+  autoSetupRemote = true
+[rebase]
+  autoStash = true
+  autoSquash = true
+  updateRefs = true
+[merge]
+  conflictstyle = diff3
+[fetch]
+  prune = true
+[help]
+  autocorrect = 1
+[alias]
+  ria = rebase -i --autosquash
+  save = stash push -m
+  stashes = stash list
+  up = "!git pull --rebase --autostash"
+  undo = reset HEAD~1 --mixed
