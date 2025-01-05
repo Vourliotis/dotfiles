@@ -1,16 +1,20 @@
+# History settings
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
+
+# Zsh options
 setopt autocd extendedglob nomatch notify
 bindkey -v
-zstyle :compinstall filename '/home/xvourliotis/.zshrc'
-autoload -Uz compinit
-compinit
 
-# Prepend Nix profile data directory to XDG_DATA_DIRS if it exists.
-if [ -d "$HOME/.nix-profile/share/applications" ]; then
-    export XDG_DATA_DIRS="$HOME/.nix-profile/share:$XDG_DATA_DIRS"
-fi
+# Completion setup
+zstyle :compinstall filename "$HOME/.zshrc"
+autoload -Uz compinit
+compinit || true  # Proceed silently if compinit fails
+
+# Prepend Nix profile data directory to XDG_DATA_DIRS if it exists
+[ -d "$HOME/.nix-profile/share/applications" ] && \
+  export XDG_DATA_DIRS="$HOME/.nix-profile/share:$XDG_DATA_DIRS"
 
 # FZF
 FZF_LOCATIONS=(
@@ -28,17 +32,19 @@ done
 
 # Ruby
 export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init - zsh)"
+command -v rbenv >/dev/null 2>&1 && {
+  eval "$(rbenv init - zsh)"
+}
 
 # Go
-export PATH=$PATH:/usr/local/go/bin
+[ -d "/usr/local/go/bin" ] && export PATH=$PATH:/usr/local/go/bin
 
 # nvm
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+export NVM_DIR="${XDG_CONFIG_HOME:-$HOME/.nvm}"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
 # Starship prompt
-eval "$(starship init zsh)"
+command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
 
 # Aliases
 alias ls='eza'
