@@ -131,7 +131,9 @@ GLOBAL_KEYS = GEARS.table.join(
 CLIENT_KEYS = GEARS.table.join(
   -- Fullscreen
   AWFUL.key({ MOD_KEY }, 'f', function(c)
-    c.fullscreen = not c.fullscreen
+    c = client.focus
+    c.maximized = not c.maximized
+    c.floating = false
     c:raise()
   end, { description = 'toggle fullscreen', group = 'client' }),
 
