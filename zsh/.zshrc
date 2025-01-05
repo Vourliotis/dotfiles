@@ -7,6 +7,11 @@ zstyle :compinstall filename '/home/xvourliotis/.zshrc'
 autoload -Uz compinit
 compinit
 
+# Prepend Nix profile data directory to XDG_DATA_DIRS if it exists.
+if [ -d "$HOME/.nix-profile/share/applications" ]; then
+    export XDG_DATA_DIRS="$HOME/.nix-profile/share:$XDG_DATA_DIRS"
+fi
+
 # Sources
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
