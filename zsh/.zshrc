@@ -12,9 +12,19 @@ if [ -d "$HOME/.nix-profile/share/applications" ]; then
     export XDG_DATA_DIRS="$HOME/.nix-profile/share:$XDG_DATA_DIRS"
 fi
 
-# Sources
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-source /usr/share/doc/fzf/examples/completion.zsh
+# FZF
+FZF_LOCATIONS=(
+  "$HOME/.nix-profile/share/fzf"
+  "/usr/share/doc/fzf/examples"
+)
+
+for FZF_DIR in "${FZF_LOCATIONS[@]}"; do
+  if [ -d "$FZF_DIR" ]; then
+    [ -f "$FZF_DIR/key-bindings.zsh" ] && source "$FZF_DIR/key-bindings.zsh"
+    [ -f "$FZF_DIR/completion.zsh" ] && source "$FZF_DIR/completion.zsh"
+    break
+  fi
+done
 
 # Ruby
 export PATH="$HOME/.rbenv/bin:$PATH"
