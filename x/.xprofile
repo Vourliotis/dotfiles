@@ -1,6 +1,2 @@
 # Environment variables
 export EDITOR="nvim"
-export BROWSER="google-chrome"
-export SHELL="/bin/zsh"
-export TERM="xterm-kitty"
-# export TERM="xterm-256color"
