@@ -39,7 +39,6 @@ AWFUL.screen.connect_for_each_screen(function(s)
         HELPERS.horizontal_pad(5),
         HELPERS.widget_margin(widgets.battery, 1),
         HELPERS.horizontal_pad(5),
-        HELPERS.widget_margin(widgets.keyboard.icon, 1),
         HELPERS.widget_margin(widgets.keyboard.layout, 1),
         HELPERS.widget_margin(WIBOX.widget.systray(), 3),
         HELPERS.horizontal_pad(5),
