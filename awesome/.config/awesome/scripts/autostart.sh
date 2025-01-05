@@ -20,7 +20,7 @@ export SSH_AUTH_SOCK
 # Add SSH private key to the authentication agent
 run ssh-add ~/.ssh/id_rsa
 # Dex
-run dex -a -s /etc/xdg/autostart/:~/.config/autostart/  
+run dex -a -s /etc/xdg/autostart/:~/.config/autostart/
 # Network Applet
 run nm-applet --indicator &
 # Flameshot
