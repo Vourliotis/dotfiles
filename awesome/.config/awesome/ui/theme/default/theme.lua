@@ -5,7 +5,7 @@ local config_path = AWFUL.util.getdir('config') .. '/ui/'
 
 local theme = {}
 
-theme.font = 'FiraCode Nerd Font 10'
+theme.font = 'MonoLisa Nerd Font 10'
 theme.icon_theme = nil
 theme.systray_icon_spacing = dpi(1)
 theme.rounded = dpi(8)
