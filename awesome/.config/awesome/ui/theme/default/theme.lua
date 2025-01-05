@@ -28,6 +28,7 @@ theme.border_width = dpi(1)
 theme.border_normal = colors.color0
 theme.border_focus = colors.color4
 theme.border_marked = colors.color4
+theme.border_radius = dpi(8)
 
 theme.taglist_fg = colors.color8
 theme.taglist_fg_occupied = colors.foreground
