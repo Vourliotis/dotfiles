@@ -15,7 +15,7 @@ AWFUL.layout.layouts = {
 AWFUL.rules.rules = {
   -- Disable the floating property for fullscreen to work properly
   {
-    rule_any = { class = { 'Google-chrome', 'google-chrome' } },
+    rule_any = { class = { 'Google-chrome', 'google-chrome', 'Navigator', 'firefox-esr' } },
     properties = { floating = false },
   },
 
