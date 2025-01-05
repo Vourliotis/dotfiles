@@ -12,7 +12,7 @@ function run {
 # Autorandr
 run autorandr -c
 # Picom
-run picom --experimental-backends --config $HOME/.config/picom/picom.conf &
+run picom --config $HOME/.config/picom/picom.conf &
 # Start GNOME Keyring Daemon and set environment variables
 eval $(/usr/bin/gnome-keyring-daemon --start)
 # Export SSH authentication socket
