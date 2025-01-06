@@ -5,64 +5,65 @@ local config_path = AWFUL.util.getdir('config') .. '/ui/'
 
 local theme = {}
 
-theme.font = 'MonoLisa Nerd Font 10'
+theme.font = 'JetBrainsMono Nerd Font 10'
 theme.icon_theme = nil
-theme.systray_icon_spacing = dpi(1)
-theme.rounded = dpi(8)
-theme.useless_gap = dpi(3)
+theme.systray_icon_spacing = dpi(2)
+theme.rounded = dpi(12)
+theme.useless_gap = dpi(4)
 theme.gap_single_client = true
-theme.bar_height = dpi(26)
+theme.bar_height = dpi(32)
 
 theme.bg_normal = colors.background
 theme.bg_focus = colors.color4
-theme.bg_urgent = colors.color4
+theme.bg_urgent = colors.color1
 theme.bg_minimize = colors.background
 theme.bg_systray = colors.background
 
 theme.fg_normal = colors.foreground
 theme.fg_focus = colors.color4
 theme.fg_urgent = colors.color1
-theme.fg_minimize = colors.color6
+theme.fg_minimize = colors.color7
 
-theme.border_width = dpi(1)
+theme.border_width = dpi(2)
 theme.border_normal = colors.color0
 theme.border_focus = colors.color4
-theme.border_marked = colors.color4
-theme.border_radius = dpi(8)
+theme.border_marked = colors.color5
+theme.border_radius = dpi(12)
 
 theme.taglist_fg = colors.color8
-theme.taglist_fg_occupied = colors.foreground
+theme.taglist_fg_occupied = colors.color7
 theme.taglist_fg_focus = colors.color11
 theme.taglist_fg_urgent = colors.color9
 
-theme.taglist_bg = colors.background
-theme.taglist_bg_urgent = colors.background
-theme.taglist_bg_focus = colors.background
+theme.taglist_bg = colors.background .. '00'
+theme.taglist_bg_urgent = colors.background .. '00'
+theme.taglist_bg_focus = colors.background .. '00'
 
-theme.tasklist_bg_normal = colors.color15
-theme.tasklist_bg_focus = colors.color15
-theme.tasklist_fg_focus = colors.color2
+theme.tasklist_bg_normal = colors.color0
+theme.tasklist_bg_focus = colors.color4
+theme.tasklist_fg_focus = colors.background
 
 theme.titlebar_bg_normal = colors.color0
 theme.titlebar_bg_focus = colors.color0
-theme.titlebar_fg_focus = colors.color0
+theme.titlebar_fg_focus = colors.color4
 
-theme.menu_height = 20
-theme.menu_width = 180
-theme.menu_context_height = 20
+theme.menu_height = dpi(24)
+theme.menu_width = dpi(200)
+theme.menu_context_height = dpi(24)
 theme.menu_bg_normal = colors.color0
-theme.menu_bg_focus = colors.color8
-theme.menu_fg_focus = colors.foreground
-theme.menu_border_color = colors.color15
-theme.menu_border_width = 1
+theme.menu_bg_focus = colors.color4
+theme.menu_fg_focus = colors.background
+theme.menu_border_color = colors.color4
+theme.menu_border_width = dpi(2)
 
--- Naughty
 theme.notification_fg = colors.foreground
 theme.notification_bg = colors.background
-theme.notification_max_width = 600
-theme.notification_max_height = 150
+theme.notification_max_width = dpi(600)
+theme.notification_max_height = dpi(150)
+theme.notification_border_width = dpi(2)
+theme.notification_border_color = colors.color4
+theme.notification_margin = dpi(16)
 
--- Assets
 theme.normal_tag_format = config_path .. 'assets/tags/ghost.svg'
 theme.occupied_tag_format = config_path .. 'assets/tags/ghost.svg'
 theme.selected_tag_format = config_path .. 'assets/tags/pacman.svg'

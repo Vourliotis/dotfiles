@@ -12,7 +12,7 @@ local power_button = WIBOX.widget({
     widget = WIBOX.container.margin,
   },
   fg = BEAUTIFUL.fg_normal,
-  bg = BEAUTIFUL.bg_normal,
+  bg = BEAUTIFUL.bg_normal .. '00',
   widget = WIBOX.container.background,
 })
 

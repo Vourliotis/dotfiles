@@ -6,7 +6,7 @@ local date = WIBOX.widget({
     widget = WIBOX.container.background,
     {
       widget = WIBOX.widget.textclock,
-      font = BEAUTIFUL.font .. ' Bold 10',
+      font = BEAUTIFUL.font .. ' Bold 11',
     },
   },
   margins = DPI(7),

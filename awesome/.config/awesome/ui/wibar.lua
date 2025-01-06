@@ -1,3 +1,6 @@
+local xresources = require('beautiful.xresources')
+local dpi = xresources.apply_dpi
+
 local widgets = {
   keyboard = require('ui.modules.keyboard'),
   power = require('ui.modules.power'),
@@ -9,16 +12,32 @@ local widgets = {
 }
 
 AWFUL.screen.connect_for_each_screen(function(s)
-  -- Set wallpaper when connecting a screen
   AWFUL.spawn.with_shell('nitrogen --restore --set-scaled')
-
-  -- Each screen has its own tag table.
   AWFUL.tag({ '1', '2', '3', '4', '5', '6', '7', '8', '9' }, s, AWFUL.layout.layouts[1])
 
-  -- Create the wibox
-  s.wibox = AWFUL.wibar({ position = 'top', screen = s, height = BEAUTIFUL.bar_height })
+  s.wibox = AWFUL.wibar({
+    position = 'top',
+    screen = s,
+    height = BEAUTIFUL.bar_height,
+    bg = BEAUTIFUL.bg_normal .. 'cc',
+  })
 
-  -- Add widgets to the wibox
+  local systray_container = nil
+  if s == screen.primary then
+    systray_container = {
+      layout = WIBOX.container.background,
+      bg = BEAUTIFUL.bg_normal,
+      shape = function(cr, width, height)
+        GEARS.shape.rounded_rect(cr, width, height, BEAUTIFUL.border_radius)
+      end,
+      {
+        layout = WIBOX.container.margin,
+        margins = dpi(8),
+        WIBOX.widget.systray(),
+      },
+    }
+  end
+
   s.wibox:setup({
     layout = WIBOX.layout.stack,
     {
@@ -28,21 +47,27 @@ AWFUL.screen.connect_for_each_screen(function(s)
         layout = WIBOX.container.place,
         valign = 'center',
         halign = 'center',
-        HELPERS.widget_margin(widgets.tags(s), 2),
+        HELPERS.widget_margin(widgets.tags(s), 4),
       },
       nil,
       {
         -- Right widgets
         layout = WIBOX.layout.fixed.horizontal,
-        HELPERS.widget_margin(widgets.volume, 4),
-        HELPERS.widget_margin(widgets.brightness, 4),
-        HELPERS.horizontal_pad(5),
-        HELPERS.widget_margin(widgets.battery, 1),
-        HELPERS.horizontal_pad(5),
-        HELPERS.widget_margin(widgets.keyboard.layout, 1),
-        HELPERS.widget_margin(WIBOX.widget.systray(), 3),
-        HELPERS.horizontal_pad(5),
+        {
+          layout = WIBOX.container.background,
+          fg = BEAUTIFUL.fg_normal,
+          widgets.keyboard.layout,
+        },
+        HELPERS.horizontal_pad(10),
+        HELPERS.widget_margin(widgets.brightness, 6),
+        HELPERS.widget_margin(widgets.volume, 6),
+        HELPERS.horizontal_pad(10),
+        widgets.battery,
+        widgets.battery and HELPERS.horizontal_pad(20) or nil,
+        systray_container,
+        systray_container and HELPERS.horizontal_pad(20) or nil,
         widgets.power,
+        HELPERS.horizontal_pad(5),
       },
     },
     {
@@ -50,7 +75,15 @@ AWFUL.screen.connect_for_each_screen(function(s)
       layout = WIBOX.container.place,
       valign = 'center',
       halign = 'center',
-      WIBOX.container.background(widgets.date),
+      {
+        layout = WIBOX.container.margin,
+        {
+          layout = WIBOX.container.background,
+          bg = BEAUTIFUL.bg_normal .. '00',
+          fg = BEAUTIFUL.fg_normal,
+          widgets.date,
+        },
+      },
     },
   })
 end)
