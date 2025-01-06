@@ -1,37 +1,37 @@
-*background: #171717
-*foreground: #F6F6F6
+*background: #1a1b26
+*foreground: #ffffff
 
 ! Black
-*color0: #45475A
-*color8: #585B70
+*color0: #24283b
+*color8: #414868
 
 ! Red
-*color1: #F38BA8
-*color9: #F38BA8
+*color1: #f7768e
+*color9: #ff7a93
 
 ! Green
-*color2: #A6E3A1
-*color10: #A6E3A1
+*color2: #9ece6a
+*color10: #b9f27c
 
 ! Yellow
-*color3: #F9E2AF
-*color11: #F9E2AF
+*color3: #e0af68
+*color11: #ff9e64
 
 ! Blue
-*color4: #89B4FA
-*color12: #89B4FA
+*color4: #7aa2f7
+*color12: #7da6ff
 
 ! Magenta
-*color5: #f5c2e7
-*color13: #f5c2e7
+*color5: #bb9af7
+*color13: #bb9af7
 
 ! Cyan
-*color6: #94e2d5
-*color14: #94e2d5
+*color6: #7dcfff
+*color14: #2ac3de
 
 ! White
-*color7: #bac2de
-*color15: #A6ADC8
+*color7: #a9b1d6
+*color15: #c0caf5
 
 ! Font Rendering
 Xft.antialias: 1
