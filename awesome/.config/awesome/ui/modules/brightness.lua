@@ -1,4 +1,15 @@
 local function brightness()
+  local handle = io.popen('which xbacklight')
+  if not handle then
+    return WIBOX.widget({})
+  end
+
+  local result = handle:read('*a')
+  handle:close()
+  if #result == 0 then
+    return WIBOX.widget({})
+  end
+
   local widget = WIBOX.widget({
     {
       id = 'icon',

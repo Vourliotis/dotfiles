@@ -1,4 +1,15 @@
 local function battery()
+  local handle = io.popen('acpi -b')
+  if not handle then
+    return WIBOX.widget({})
+  end
+
+  local result = handle:read('*a')
+  handle:close()
+  if #result == 0 then
+    return WIBOX.widget({})
+  end
+
   local widget = WIBOX.widget({
     {
       id = 'icon',
