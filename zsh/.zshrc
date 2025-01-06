@@ -12,6 +12,10 @@ zstyle :compinstall filename "$HOME/.zshrc"
 autoload -Uz compinit
 compinit || true  # Proceed silently if compinit fails
 
+# Load custom environment variables and aliases
+[[ -f "$HOME/.zsh_env" ]] && source "$HOME/.zsh_env"
+[[ -f "$HOME/.zsh_aliases" ]] && source "$HOME/.zsh_aliases"
+
 # Prepend Nix profile data directory to XDG_DATA_DIRS if it exists
 [ -d "$HOME/.nix-profile/share/applications" ] && \
   export XDG_DATA_DIRS="$HOME/.nix-profile/share:$XDG_DATA_DIRS"
