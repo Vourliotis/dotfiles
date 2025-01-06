@@ -1,23 +1,23 @@
 configuration {
     modi: "drun,run";
     show-icons: false;
-    display-drun: "";
+    display-drun: "";
     display-run: "Run";
-    display-filebrowser: "";
-    display-window: "";
+    display-filebrowser: "";
+    display-window: "";
     drun-display-format: "{name}";
     window-format: "{w} · {c} · {t}";
 }
 
 * {
-    font: "FiraCode Nerd Font Mono 12";
+    font: "JetBrainsMono Nerd Font 11";
 
-    background: #171717FF;
-    background-alt: #45475AFF;
+    background: #1a1b26FF;
+    background-alt: #24283bFF;
     foreground: #FFFFFFFF;
-    selected: #F6F6F6FF;
-    active: #171717FF;
-    urgent: #F38BA8FF;
+    selected: #ff9e64FF;
+    active: #1a1b26FF;
+    urgent: #f7768eFF;
 
     border-colour: var(selected);
     handle-colour: var(foreground);
@@ -50,17 +50,17 @@ window {
     anchor: north;
     fullscreen: false;
     width: 100%;
-    height: 26px;
+    height: 32px;
     x-offset: 0px;
     y-offset: 0px;
     padding: 0px;
     children: [ horibox ];
     enabled: true;
-    border: 0px solid;
+    border: 0px;
     border-radius: 0px;
     border-color: @border-colour;
-    cursor: "default";
     background-color: @background-colour;
+    cursor: "default";
 }
 
 horibox {
@@ -68,14 +68,14 @@ horibox {
     background-color: @background-colour;
     text-color: @foreground-colour;
     orientation: horizontal;
-    children: [ "prompt", "textbox-prompt-colon", "entry", "listview" ];
+    children: [ "prompt", "entry", "listview" ];
 }
 
 mainbox {
     enabled: true;
-    spacing: 20px;
-    border: 0px solid;
-    border-radius: 0px;
+    spacing: 12px;
+    border: 0px;
+    border-radius: 12px;
     border-color: @border-colour;
     background-color: transparent;
     children: [ "inputbar", "message", "listview", "mode-switcher" ];
@@ -83,32 +83,30 @@ mainbox {
 
 inputbar {
     enabled: true;
-    spacing: 10px;
-    border: 0px solid;
-    border-radius: 4px;
+    spacing: 12px;
+    padding: 8px;
+    border: 0px;
+    border-radius: 8px;
     border-color: @border-colour;
     background-color: @alternate-background;
     text-color: @foreground-colour;
     children: [ "prompt", "entry" ];
 }
 
-prompt, textbox-prompt-colon, entry {
+prompt, entry {
     enabled: true;
     background-color: inherit;
     text-color: inherit;
-}
-
-textbox-prompt-colon {
-    expand: false;
-    str: ":";
+    padding: 0px 8px;
+    margin: 4px 0px;
 }
 
 entry {
     expand: false;
     width: 20em;
     cursor: text;
-    placeholder: "";
-    placeholder-color: inherit;
+    placeholder: "Search...";
+    placeholder-color: @foreground-colour;
 }
 
 listview {
@@ -122,8 +120,8 @@ listview {
     reverse: false;
     fixed-height: true;
     fixed-columns: true;
-    spacing: 10px;
-    border: 0px solid;
+    spacing: 12px;
+    border: 0px;
     border-radius: 0px;
     border-color: @border-colour;
     background-color: transparent;
@@ -131,22 +129,26 @@ listview {
     cursor: "default";
 }
 
-scrollbar {
-    handle-width: 5px;
-    handle-color: @handle-colour;
-    border-radius: 8px;
-    background-color: @alternate-background;
-}
-
 element {
     enabled: true;
     spacing: 8px;
-    border: 0px solid;
+    padding: 4px 8px;
+    border: 0px;
     border-radius: 0px;
     border-color: @border-colour;
     background-color: transparent;
     text-color: @foreground-colour;
     cursor: pointer;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color: @foreground-colour;
+}
+
+element selected.normal {
+    background-color: @selected;
+    text-color: @background;
 }
 
 element-text {
@@ -159,17 +161,18 @@ element-text {
 
 mode-switcher {
     enabled: true;
-    spacing: 10px;
-    border: 0px solid;
-    border-radius: 4px;
+    spacing: 12px;
+    border: 0px;
+    border-radius: 8px;
     border-color: @border-colour;
     background-color: @alternate-background;
     text-color: @foreground-colour;
 }
 
 button {
-    border: 0px solid;
-    border-radius: 4px;
+    padding: 4px 8px;
+    border: 0px;
+    border-radius: 6px;
     border-color: @border-colour;
     background-color: transparent;
     text-color: inherit;
@@ -178,16 +181,17 @@ button {
 
 message {
     enabled: true;
-    border: 0px solid;
-    border-radius: 0px;
+    border: 0px;
+    border-radius: 8px;
     border-color: @border-colour;
     background-color: transparent;
     text-color: @foreground-colour;
 }
 
 textbox {
-    border: 0px solid;
-    border-radius: 0px;
+    padding: 8px;
+    border: 0px;
+    border-radius: 8px;
     border-color: @border-colour;
     background-color: @alternate-background;
     text-color: @foreground-colour;
@@ -199,8 +203,8 @@ textbox {
 }
 
 error-message {
-    border: 0px solid;
-    border-radius: 0px;
+    border: 0px;
+    border-radius: 8px;
     border-color: @border-colour;
     background-color: @background-colour;
     text-color: @foreground-colour;
