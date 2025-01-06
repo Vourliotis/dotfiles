@@ -10,18 +10,25 @@ local function battery()
     return WIBOX.widget({})
   end
 
-  local widget = WIBOX.widget({
+  local battery_icon = WIBOX.widget({
     {
-      id = 'icon',
+      image = GEARS.color.recolor_image(BEAUTIFUL.battery_full, BEAUTIFUL.fg_normal),
+      forced_width = 22,
       widget = WIBOX.widget.imagebox,
     },
-    {
-      id = 'percentage',
-      widget = WIBOX.widget.textbox,
-      forced_width = 40,
-      align = 'center',
-    },
-    layout = WIBOX.layout.fixed.horizontal,
+    valign = 'center',
+    halign = 'center',
+    widget = WIBOX.container.place,
+  })
+
+  local battery_tooltip = AWFUL.tooltip({
+    objects = { battery_icon },
+    bg = BEAUTIFUL.bg_normal .. 'cc',
+    fg = BEAUTIFUL.fg_normal,
+    border_width = 0,
+    font = BEAUTIFUL.font .. ' 12',
+    mode = 'outside',
+    preferred_alignments = 'middle',
   })
 
   local function update_widget()
@@ -34,23 +41,26 @@ local function battery()
       if charge >= full_percentagle then
         charge_text = '100'
       end
-      widget.percentage.text = charge_text .. '%'
 
+      battery_tooltip.markup = '<span color="#ffffff"><b>' .. charge_text .. '%</b></span>'
+
+      local icon_image
       if status == 'Discharging' then
         if charge <= 25 then
-          widget.icon.image = GEARS.color.recolor_image(BEAUTIFUL.battery_empty, BEAUTIFUL.fg_normal)
+          icon_image = BEAUTIFUL.battery_empty
         elseif charge <= 50 then
-          widget.icon.image = GEARS.color.recolor_image(BEAUTIFUL.battery_quarter, BEAUTIFUL.fg_normal)
+          icon_image = BEAUTIFUL.battery_quarter
         elseif charge <= 75 then
-          widget.icon.image = GEARS.color.recolor_image(BEAUTIFUL.battery_half, BEAUTIFUL.fg_normal)
+          icon_image = BEAUTIFUL.battery_half
         elseif charge <= full_percentagle then
-          widget.icon.image = GEARS.color.recolor_image(BEAUTIFUL.battery_three_quarters, BEAUTIFUL.fg_normal)
+          icon_image = BEAUTIFUL.battery_three_quarters
         else
-          widget.icon.image = GEARS.color.recolor_image(BEAUTIFUL.battery_full, BEAUTIFUL.fg_normal)
+          icon_image = BEAUTIFUL.battery_full
         end
       else
-        widget.icon:set_image(GEARS.color.recolor_image(BEAUTIFUL.battery_charging, BEAUTIFUL.fg_normal))
+        icon_image = BEAUTIFUL.battery_charging
       end
+      battery_icon.widget.image = GEARS.color.recolor_image(icon_image, BEAUTIFUL.fg_normal)
     end)
   end
 
@@ -63,7 +73,7 @@ local function battery()
     end,
   })
 
-  return widget
+  return battery_icon
 end
 
 return battery()
