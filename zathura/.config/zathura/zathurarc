@@ -1,0 +1,8 @@
+set selection-clipboard clipboard
+set adjust-open "width"
+set scroll-step 100
+
+map <C-k> scroll half-up
+map <C-j> scroll half-down
+
+map o exec "sh -c 'winid=$(xdotool getactivewindow) && file=$(fd -e pdf -t f -L . \"/media\" \"$HOME\" -x basename {} \; | rofi -dmenu -i -p \"PDF\" -fuzzy -async-read -theme-str \"window {width: 80%; height: 60%;}\" -theme-str \"listview {lines: 15;}\" -theme-str \"entry {placeholder: \\\"\\\"; }\") && [ -n \"$file\" ] && fullpath=$(fd -e pdf -t f -d 6 -L . \"/media\" \"$HOME\" -x echo {} \; | grep -F \"$file\" | head -n1) && zathura -e $winid \"$fullpath\"'"
