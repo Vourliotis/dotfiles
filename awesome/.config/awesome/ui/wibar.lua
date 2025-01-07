@@ -1,6 +1,3 @@
-local xresources = require('beautiful.xresources')
-local dpi = xresources.apply_dpi
-
 local widgets = {
   keyboard = require('ui.modules.keyboard'),
   power = require('ui.modules.power'),
@@ -10,6 +7,7 @@ local widgets = {
   brightness = require('ui.modules.brightness'),
   volume = require('ui.modules.volume'),
   notification_toggle = require('ui.modules.notification_toggle'),
+  systray = require('ui.modules.systray'),
 }
 
 AWFUL.screen.connect_for_each_screen(function(s)
@@ -24,22 +22,6 @@ AWFUL.screen.connect_for_each_screen(function(s)
     height = BEAUTIFUL.bar_height,
     bg = BEAUTIFUL.bg_normal .. 'cc',
   })
-
-  local systray_container = nil
-  if s == screen.primary then
-    systray_container = {
-      layout = WIBOX.container.background,
-      bg = BEAUTIFUL.bg_normal,
-      shape = function(cr, width, height)
-        GEARS.shape.rounded_rect(cr, width, height, BEAUTIFUL.border_radius)
-      end,
-      {
-        layout = WIBOX.container.margin,
-        margins = dpi(8),
-        WIBOX.widget.systray(),
-      },
-    }
-  end
 
   s.wibox:setup({
     layout = WIBOX.layout.stack,
@@ -63,8 +45,8 @@ AWFUL.screen.connect_for_each_screen(function(s)
         HELPERS.widget_margin(widgets.volume, 6),
         HELPERS.widget_margin(widgets.brightness, 6),
         HELPERS.horizontal_pad(10),
-        systray_container,
-        systray_container and HELPERS.horizontal_pad(20) or nil,
+        s == screen.primary and widgets.systray,
+        s == screen.primary and HELPERS.horizontal_pad(20) or nil,
         widgets.power,
         HELPERS.horizontal_pad(5),
       },
