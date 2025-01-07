@@ -107,3 +107,15 @@ client.connect_signal('manage', function(c)
     GEARS.shape.rounded_rect(cr, w, h, BEAUTIFUL.border_radius)
   end
 end)
+
+screen.connect_signal('primary_changed', function()
+  for s in screen do
+    if s.wibox then
+      s.wibox:remove()
+      s.wibox = nil
+    end
+  end
+
+  package.loaded['ui.wibar'] = nil
+  require('ui.wibar')
+end)

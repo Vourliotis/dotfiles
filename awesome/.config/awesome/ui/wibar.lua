@@ -14,7 +14,9 @@ local widgets = {
 
 AWFUL.screen.connect_for_each_screen(function(s)
   AWFUL.spawn.with_shell('nitrogen --restore --set-scaled')
-  AWFUL.tag({ '1', '2', '3', '4', '5', '6', '7', '8', '9' }, s, AWFUL.layout.layouts[1])
+  if #s.tags == 0 then
+    AWFUL.tag({ '1', '2', '3', '4', '5', '6', '7', '8', '9' }, s, AWFUL.layout.layouts[1])
+  end
 
   s.wibox = AWFUL.wibar({
     position = 'top',
