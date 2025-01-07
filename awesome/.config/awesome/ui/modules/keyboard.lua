@@ -7,7 +7,6 @@ local keyboard_icon = WIBOX.widget({
 })
 
 local keyboard_layout = AWFUL.widget.keyboardlayout()
-local original_set_text = keyboard_layout.widget.set_text
 
 keyboard_layout.widget.set_text = function(widget, text)
   if text then
