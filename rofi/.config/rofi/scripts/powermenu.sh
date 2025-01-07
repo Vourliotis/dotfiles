@@ -9,7 +9,7 @@ sleep="󰒲 Sleep"
 
 selected_option=$(
   echo -e "$lock\n$logout\n$sleep\n$reboot\n$shutdown" |
-    rofi -dmenu -i -p "Power"
+    rofi -dmenu -i -p ""
   )
 
 if [ "$selected_option" == "$lock" ]; then

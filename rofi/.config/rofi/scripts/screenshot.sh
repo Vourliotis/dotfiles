@@ -1,10 +1,10 @@
 #!/bin/bash
 
-option0="area"
-option1="full"
+option0="Area"
+option1="Full"
 options="$option0\n$option1"
 
-selected=$(echo -e "$options" | rofi -lines 3 -dmenu -p "flameshot")
+selected=$(echo -e "$options" | rofi -dmenu -i -p "Screenshot")
 case $selected in
     $option0)
         sleep .5
@@ -13,4 +13,3 @@ case $selected in
         sleep .5
         flameshot full -p ~/Pictures/Screenshots;;
 esac
-
