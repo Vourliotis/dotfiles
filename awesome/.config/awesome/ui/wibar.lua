@@ -54,18 +54,13 @@ AWFUL.screen.connect_for_each_screen(function(s)
       {
         -- Right widgets
         layout = WIBOX.layout.fixed.horizontal,
-        {
-          layout = WIBOX.container.background,
-          fg = BEAUTIFUL.fg_normal,
-          widgets.keyboard.layout,
-        },
-        HELPERS.horizontal_pad(10),
-        HELPERS.widget_margin(widgets.brightness, 6),
-        HELPERS.widget_margin(widgets.volume, 6),
+        HELPERS.widget_margin(widgets.keyboard.layout, 6),
         HELPERS.widget_margin(widgets.notification_toggle, 6),
+        widgets.battery and HELPERS.widget_margin(widgets.battery, 6),
         HELPERS.horizontal_pad(10),
-        widgets.battery,
-        widgets.battery and HELPERS.horizontal_pad(20) or nil,
+        HELPERS.widget_margin(widgets.volume, 6),
+        HELPERS.widget_margin(widgets.brightness, 6),
+        HELPERS.horizontal_pad(10),
         systray_container,
         systray_container and HELPERS.horizontal_pad(20) or nil,
         widgets.power,
