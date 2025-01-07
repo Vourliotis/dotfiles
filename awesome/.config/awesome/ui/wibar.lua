@@ -9,6 +9,7 @@ local widgets = {
   battery = require('ui.modules.battery'),
   brightness = require('ui.modules.brightness'),
   volume = require('ui.modules.volume'),
+  notification_toggle = require('ui.modules.notification_toggle'),
 }
 
 AWFUL.screen.connect_for_each_screen(function(s)
@@ -61,6 +62,7 @@ AWFUL.screen.connect_for_each_screen(function(s)
         HELPERS.horizontal_pad(10),
         HELPERS.widget_margin(widgets.brightness, 6),
         HELPERS.widget_margin(widgets.volume, 6),
+        HELPERS.widget_margin(widgets.notification_toggle, 6),
         HELPERS.horizontal_pad(10),
         widgets.battery,
         widgets.battery and HELPERS.horizontal_pad(20) or nil,

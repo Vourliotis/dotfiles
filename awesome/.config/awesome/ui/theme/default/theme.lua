@@ -78,6 +78,9 @@ theme.notification_progress_border_width = dpi(0)
 theme.notification_progress_height = dpi(8)
 theme.notification_progress_margin = dpi(2)
 
+theme.notification_on = config_path .. 'assets/notifications/notification_on.svg'
+theme.notification_off = config_path .. 'assets/notifications/notification_off.svg'
+
 theme.normal_tag_format = config_path .. 'assets/tags/ghost.svg'
 theme.occupied_tag_format = config_path .. 'assets/tags/ghost.svg'
 theme.selected_tag_format = config_path .. 'assets/tags/pacman.svg'
