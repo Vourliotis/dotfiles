@@ -102,12 +102,6 @@ screen.connect_signal('property::geometry', function()
   AWFUL.spawn.with_shell('nitrogen --restore --set-scaled')
 end)
 
-client.connect_signal('manage', function(c)
-  c.shape = function(cr, w, h)
-    GEARS.shape.rounded_rect(cr, w, h, BEAUTIFUL.border_radius)
-  end
-end)
-
 screen.connect_signal('primary_changed', function()
   for s in screen do
     if s.wibox then
