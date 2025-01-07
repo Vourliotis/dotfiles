@@ -20,6 +20,9 @@ compinit || true  # Proceed silently if compinit fails
 [ -d "$HOME/.nix-profile/share/applications" ] && \
   export XDG_DATA_DIRS="$HOME/.nix-profile/share:$XDG_DATA_DIRS"
 
+# Allow unfree nix packages
+export NIXPKGS_ALLOW_UNFREE=1
+
 # FZF
 FZF_LOCATIONS=(
   "$HOME/.nix-profile/share/fzf"
