@@ -51,16 +51,21 @@ export NVM_DIR="${XDG_CONFIG_HOME:-$HOME/.nvm}"
 command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
 
 # Aliases
+alias home='cd ~'
+alias dotfiles='cd ~/dotfiles'
+alias vimconf='cd ~/.config/nvim'
 alias ls='eza'
 alias ll='eza -l'
 alias la='eza -la'
 alias lt='eza --tree'
 alias l='eza -F'
-alias vimconf='cd ~/.config/nvim'
 alias gb='git branch'
 alias gca='git commit --amend --no-edit --allow-empty-message'
 alias gs='git status'
 alias gfr='git fetch origin --prune && git reset --hard @{u} && git clean -f -d'
 alias fix='git commit --fixup'
-alias chbr='git checkout $(git branch | fzf --height 40% --layout reverse | rt -d "*[:space:]|+[:space:]")'
+alias chbr='git checkout $(git branch | fzf --height 40% --layout reverse | tr -d "*[:space:]|+[:space:]")'
+alias dbr='git branch -D $(git branch | fzf --height 40% --layout reverse | tr -d "*[:space:]|+[:space:]")'
 alias lg='lazygit'
+alias wname='xprop | grep WM_CLASS'
+alias auau='sudo apt update && sudo apt upgrade'
