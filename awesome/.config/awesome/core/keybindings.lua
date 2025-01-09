@@ -53,6 +53,11 @@ GLOBAL_KEYS = GEARS.table.join(
     AWFUL.spawn.with_shell('nautilus')
   end, { description = 'run nautilus', group = 'launcher' }),
 
+  -- Run Tabbed Zathura
+  AWFUL.key({ MOD_KEY }, 'z', function()
+    AWFUL.spawn.with_shell('tabbed -c zathura -e 2>/dev/null')
+  end, { description = 'run tabbed zathura', group = 'launcher' }),
+
   -- Print Screen
   AWFUL.key({}, 'Print', function()
     AWFUL.spawn.with_shell('~/.config/rofi/scripts/screenshot.sh')
