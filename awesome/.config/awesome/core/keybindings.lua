@@ -38,6 +38,11 @@ GLOBAL_KEYS = GEARS.table.join(
     AWFUL.spawn.with_shell('google-chrome')
   end, { description = 'run chrome', group = 'launcher' }),
 
+    -- Run Firefox
+  AWFUL.key({ MOD_KEY }, 'i', function()
+    AWFUL.spawn.with_shell('firefox')
+  end, { description = 'run firefox', group = 'launcher' }),
+
   -- Run Slack
   AWFUL.key({ MOD_KEY }, 's', function()
     AWFUL.spawn.with_shell('slack')
