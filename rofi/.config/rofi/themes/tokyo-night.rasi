@@ -12,7 +12,7 @@ configuration {
     bg: #1a1b2640;
     bg-alt: #1a1b26aa;
     fg: #ffffff;
-    fg-alt: #ffffff;
+    fg-alt: #a0a0a0;
 
     border: 0;
     margin: 0;
@@ -30,11 +30,15 @@ element {
     padding: 8 12;
     background-color: transparent;
     text-color: @fg-alt;
+    border-radius: 8px;
+    margin: 2px;
 }
 
 element selected {
     text-color: @fg;
     background-color: @bg-alt;
+    border: 1px solid;
+    border-color: @fg;
 }
 
 element-text {
