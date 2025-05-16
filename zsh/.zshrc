@@ -58,6 +58,7 @@ command -v starship >/dev/null 2>&1 && eval "$(starship init zsh)"
 alias home='cd ~'
 alias dotfiles='cd ~/dotfiles'
 alias vimconf='cd ~/.config/nvim'
+alias notes='cd ~/Obsidian/nvim/'
 alias ls='eza'
 alias ll='eza -l'
 alias la='eza -la'
@@ -73,3 +74,4 @@ alias dbr='git branch -D $(git branch | fzf --height 40% --layout reverse | tr -
 alias lg='lazygit'
 alias wname='xprop | grep WM_CLASS'
 alias auau='sudo apt update && sudo apt upgrade'
+alias bubu='brew update && brew upgrade && brew cleanup'
