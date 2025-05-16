@@ -27,6 +27,7 @@ export NIXPKGS_ALLOW_UNFREE=1
 FZF_LOCATIONS=(
   "$HOME/.nix-profile/share/fzf"
   "/usr/share/doc/fzf/examples"
+  "/opt/homebrew/opt/fzf/shell"
 )
 
 for FZF_DIR in "${FZF_LOCATIONS[@]}"; do
