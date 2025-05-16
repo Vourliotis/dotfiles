@@ -41,3 +41,8 @@ color = '0xffa066'
 [[colors.indexed_colors]]
 index = 17
 color = '0xff5d62'
+
+[keyboard]
+bindings = [
+  { key = "Slash", mods = "Control", chars = "\u001f" }
+]
