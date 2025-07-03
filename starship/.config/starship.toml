@@ -1,0 +1,17 @@
+command_timeout = 100
+scan_timeout = 100
+
+[git_metrics]
+disabled = true
+
+[git_commit]
+disabled = true
+
+[git_state]
+disabled = true
+
+[git_status]
+disabled = true
+
+[python]
+disabled = true
