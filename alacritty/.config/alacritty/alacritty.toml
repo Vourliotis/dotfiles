@@ -4,7 +4,7 @@ size = 14.0
 
 [window]
 dynamic_padding = true
-decorations = "None"
+decorations = "Buttonless"
 
 [colors.primary]
 background =  '0x1f1f28'
