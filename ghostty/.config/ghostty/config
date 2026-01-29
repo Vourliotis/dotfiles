@@ -5,3 +5,4 @@ font-thicken-strength = 100
 quit-after-last-window-closed = true
 macos-window-buttons = hidden
 macos-titlebar-style = hidden
+macos-hidden = always
