@@ -1,0 +1,144 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+USAGE="Usage: tmux-sessionizer [new|switch|kill]
+
+  new [path]   Pick a project, name the session (default)
+  switch       Fuzzy-switch between running sessions
+  kill         Fuzzy-pick a session to kill"
+
+DIRS=(~ ~/Obsidian/nvim)
+PARENT_DIRS=(~/stripe ~/services ~/projects)
+NOTES_DIR=~/Obsidian/nvim
+
+die() {
+    printf '%s\n' "$1" >&2
+    exit 1
+}
+
+switch_to() {
+    if [[ -z ${TMUX:-} ]]; then
+        tmux attach-session -t "$1"
+    else
+        tmux switch-client -t "$1"
+    fi
+}
+
+list_projects() {
+    echo "[custom path]"
+    for dir in "${DIRS[@]}"; do
+        [[ -d "$dir" ]] && echo "$dir"
+    done
+    for parent in "${PARENT_DIRS[@]}"; do
+        [[ -d "$parent" ]] && find "$parent" -mindepth 1 -maxdepth 1 -type d -not -name '.*'
+    done
+}
+
+list_sessions() {
+    tmux list-sessions -F "#{session_name}" 2>/dev/null
+}
+
+read_custom_path() {
+    local path
+    read -rp "Path: " path
+    [[ -z "$path" ]] && exit 0
+    path="${path/#\~/$HOME}"
+    [[ -d "$path" ]] || die "'$path' is not a directory"
+    echo "$path"
+}
+
+is_notes_dir() {
+    local resolved_notes
+    resolved_notes=$(cd "$NOTES_DIR" 2>/dev/null && pwd) || return 1
+    [[ "$(cd "$1" && pwd)" == "$resolved_notes" ]]
+}
+
+create_notes_session() {
+    local dir=$1
+    if tmux has-session -t=notes 2>/dev/null; then
+        switch_to notes
+        return
+    fi
+    tmux new-session -ds notes -c "$dir" -n "nvim"
+    tmux send-keys -t "notes:nvim" "nvim" Enter
+    switch_to notes
+}
+
+cmd_new() {
+    local selected
+    if [[ $# -eq 1 ]]; then
+        selected=$1
+    else
+        selected=$(list_projects | fzf --prompt="project> " --header="new session") || exit 0
+    fi
+    [[ -z "$selected" ]] && exit 0
+
+    if [[ "$selected" == "[custom path]" ]]; then
+        selected=$(read_custom_path)
+    fi
+
+    if is_notes_dir "$selected"; then
+        create_notes_session "$selected"
+        return
+    fi
+
+    local session_name
+    read -rp "Session name: " session_name
+    [[ -z "$session_name" ]] && exit 0
+    session_name=${session_name//[. ]/_}
+
+    if tmux has-session -t="$session_name" 2>/dev/null; then
+        switch_to "$session_name"
+        return
+    fi
+
+    tmux new-session -ds "$session_name" -c "$selected" -n "claude"
+    tmux send-keys -t "$session_name:claude" "claude" Enter
+    tmux new-window -t "$session_name" -n "term" -c "$selected"
+    tmux new-window -t "$session_name" -n "nvim" -c "$selected"
+    tmux send-keys -t "$session_name:nvim" "nvim" Enter
+    tmux select-window -t "$session_name:term"
+    switch_to "$session_name"
+}
+
+cmd_switch() {
+    local sessions
+    sessions=$(list_sessions) || true
+    [[ -z "$sessions" ]] && die "No tmux sessions running"
+
+    local selected
+    selected=$(echo "$sessions" | fzf --prompt="session> " --header="switch session") || exit 0
+    [[ -z "$selected" ]] && exit 0
+
+    switch_to "$selected"
+}
+
+cmd_kill() {
+    local sessions
+    sessions=$(list_sessions) || true
+    [[ -z "$sessions" ]] && die "No tmux sessions running"
+
+    local selected
+    selected=$(echo "$sessions" | fzf --prompt="kill> " --header="kill session") || exit 0
+    [[ -z "$selected" ]] && exit 0
+
+    if [[ -n ${TMUX:-} ]]; then
+        local current
+        current=$(tmux display-message -p '#S')
+        if [[ "$selected" == "$current" ]]; then
+            local next
+            next=$(list_sessions | grep -vFx "$current" | head -1) || true
+            [[ -n "$next" ]] && tmux switch-client -t "$next"
+        fi
+    fi
+
+    tmux kill-session -t "$selected"
+}
+
+case "${1:-new}" in
+    new)    shift 2>/dev/null || true; cmd_new "$@" ;;
+    switch) cmd_switch ;;
+    kill)   cmd_kill ;;
+    -h|--help) echo "$USAGE"; exit 0 ;;
+    *)      cmd_new "$1" ;;
+esac

@@ -44,6 +44,9 @@ command -v rbenv >/dev/null 2>&1 && {
   eval "$(rbenv init - zsh)"
 }
 
+# Local scripts
+export PATH="$PATH:$HOME/.local/bin"
+
 # Go
 [ -d "/usr/local/go/bin" ] && export PATH=$PATH:/usr/local/go/bin
 
