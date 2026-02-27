@@ -8,7 +8,7 @@ USAGE="Usage: tmux-sessionizer [new|switch|kill]
   kill         Fuzzy-pick a session to kill"
 
 DIRS=(~ ~/Obsidian/nvim)
-PARENT_DIRS=(~/stripe ~/services ~/projects)
+PARENT_DIRS=(~/stripe ~/services ~/projects ~/Projects)
 NOTES_DIR=~/Obsidian/nvim
 
 die() {
