@@ -1,0 +1,53 @@
+@define-color bg #1A1A1A;
+@define-color accent #E6C384;
+@define-color dim #54546D;
+@define-color dimmer #363646;
+@define-color text #c8c8c8;
+
+* {
+  font-size: 16px;
+  font-family: "BerkeleyMono Nerd Font", sans-serif;
+  font-weight: normal;
+}
+
+#waybar {
+  background-color: @bg;
+  border-bottom: 2px solid @text;
+}
+#waybar.hidden {
+  opacity: 0.1;
+}
+
+.modules-left {
+  padding-left: 5px;
+}
+.modules-right {
+  padding-right: 5px;
+}
+
+label.module,
+box.module {
+  color: @text;
+  padding: 2px 4px;
+  margin: 2px 4px;
+}
+
+#workspaces button {
+  color: @text;
+  padding: 0 6px;
+  transition: all 0.1s cubic-bezier(0.55, -0.68, 0.48, 1.68);
+}
+#workspaces button.empty {
+  color: @dim;
+}
+#workspaces button.active {
+  color: @accent;
+}
+
+#pulseaudio.muted {
+  color: @dim;
+}
+
+#clock.time {
+  font-weight: bold;
+}

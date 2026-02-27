@@ -1,0 +1,66 @@
+{
+  "layer": "top",
+  "position": "top",
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": [""],
+  "modules-right": ["tray", "hyprland/language", "pulseaudio", "clock#date", "clock#time"],
+
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "show-special": true,
+    "on-scroll-up": "hyprctl dispatch workspace r-1",
+    "on-scroll-down": "hyprctl dispatch workspace r+1",
+    "format-icons": {
+      "active": "󰮯",
+      "default": "󰊠",
+      "empty": ""
+    },
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": [],
+      "7": [],
+      "8": [],
+      "9": [],
+      "10": [],
+    },
+    "ignore-workspaces": ["special:hdrop"],
+  },
+
+  "tray": {
+    "spacing": 10,
+  },
+
+  "clock#time": {
+    "format": "{:%H:%M}",
+    "tooltip": false,
+    "timezones": ["Europe/Dublin"],
+  },
+
+  "clock#date": {
+    "format": "{:%a %d %b}",
+    "tooltip": false,
+  },
+
+  "hyprland/language": {
+    "format": "{short}",
+    "on-click": "hyprctl switchxkblayout current next",
+  },
+
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-muted": "󰝟",
+    "format-icons": {
+      "default": ["󰕿", "󰖀", "󰕾"]
+    },
+    "scroll-step": 5,
+    "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+ && notify-send -h string:x-canonical-private-synchronous:volume -h int:value:$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{printf \"%.0f\", $2*100}') 'Volume'",
+    "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%- && notify-send -h string:x-canonical-private-synchronous:volume -h int:value:$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{printf \"%.0f\", $2*100}') 'Volume'",
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-click-right": "pavucontrol",
+    "tooltip-format": "{volume}%",
+  },
+}
