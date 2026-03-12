@@ -27,10 +27,10 @@ switch_to() {
 list_projects() {
     echo "[custom path]"
     for dir in "${DIRS[@]}"; do
-        [[ -d "$dir" ]] && echo "$dir"
+        [[ -d "$dir" ]] && echo "$dir" || true
     done
     for parent in "${PARENT_DIRS[@]}"; do
-        [[ -d "$parent" ]] && find "$parent" -mindepth 1 -maxdepth 1 -type d -not -name '.*'
+        [[ -d "$parent" ]] && find "$parent" -mindepth 1 -maxdepth 1 -type d -not -name '.*' || true
     done
 }
 
