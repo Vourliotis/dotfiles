@@ -95,8 +95,6 @@ cmd_new() {
     tmux new-session -ds "$session_name" -c "$selected" -n "claude"
     tmux send-keys -t "$session_name:claude" "claude" Enter
     tmux new-window -t "$session_name" -n "term" -c "$selected"
-    tmux new-window -t "$session_name" -n "nvim" -c "$selected"
-    tmux send-keys -t "$session_name:nvim" "nvim" Enter
     tmux select-window -t "$session_name:term"
     switch_to "$session_name"
 }
