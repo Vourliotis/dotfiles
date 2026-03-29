@@ -1,0 +1,98 @@
+start-at-login = true
+automatically-unhide-macos-hidden-apps = true
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+
+[key-mapping]
+    preset = 'qwerty'
+
+[gaps]
+    inner.horizontal = 4
+    inner.vertical =   4
+    outer.left =       4
+    outer.bottom =     4
+    outer.top =        4
+    outer.right =      4
+
+# Floating rules
+[[on-window-detected]]
+    if.app-id = 'com.apple.finder'
+    run = 'layout floating'
+
+[mode.main.binding]
+    # Launch
+    cmd-enter = 'exec-and-forget open -na ghostty'
+    cmd-shift-s = 'exec-and-forget screencapture -i -c'
+    cmd-shift-r = 'exec-and-forget open -a Screenshot'
+
+    # Layout
+    cmd-o = 'layout tiles horizontal vertical'
+
+    # Focus
+    alt-h = 'focus --boundaries-action wrap-around-the-workspace left'
+    alt-j = 'focus --boundaries-action wrap-around-the-workspace down'
+    alt-k = 'focus --boundaries-action wrap-around-the-workspace up'
+    alt-l = 'focus --boundaries-action wrap-around-the-workspace right'
+
+    # Move window
+    cmd-shift-h = 'move left'
+    cmd-shift-j = 'move down'
+    cmd-shift-k = 'move up'
+    cmd-shift-l = 'move right'
+
+    # Resize
+    cmd-ctrl-h = 'resize smart -50'
+    cmd-ctrl-j = 'resize smart -50'
+    cmd-ctrl-k = 'resize smart +50'
+    cmd-ctrl-l = 'resize smart +50'
+
+    # Workspaces (numbers)
+    cmd-1 = 'workspace 1'
+    cmd-2 = 'workspace 2'
+    cmd-3 = 'workspace 3'
+    cmd-4 = 'workspace 4'
+    cmd-5 = 'workspace 5'
+    cmd-6 = 'workspace 6'
+    cmd-7 = 'workspace 7'
+    cmd-8 = 'workspace 8'
+    cmd-9 = 'workspace 9'
+    cmd-0 = 'workspace 0'
+
+    # Workspaces (letters)
+    cmd-b = 'workspace B'
+    cmd-n = 'workspace N'
+
+    # Move to workspace (numbers)
+    cmd-shift-1 = 'move-node-to-workspace 1'
+    cmd-shift-2 = 'move-node-to-workspace 2'
+    cmd-shift-3 = 'move-node-to-workspace 3'
+    cmd-shift-4 = 'move-node-to-workspace 4'
+    cmd-shift-5 = 'move-node-to-workspace 5'
+    cmd-shift-6 = 'move-node-to-workspace 6'
+    cmd-shift-7 = 'move-node-to-workspace 7'
+    cmd-shift-8 = 'move-node-to-workspace 8'
+    cmd-shift-9 = 'move-node-to-workspace 9'
+    cmd-shift-0 = 'move-node-to-workspace 0'
+
+    # Move to workspace (letters)
+    cmd-shift-b = 'move-node-to-workspace B'
+    cmd-shift-n = 'move-node-to-workspace N'
+
+    # Misc
+    cmd-shift-enter = 'move-workspace-to-monitor --wrap-around next'
+    cmd-shift-w = 'mode service'
+    cmd-shift-c = 'reload-config'
+
+[mode.service.binding]
+    esc = ['reload-config', 'mode main']
+    enter = ['reload-config', 'mode main']
+    r = ['flatten-workspace-tree', 'mode main']
+    f = ['layout floating tiling', 'mode main']
+    j = 'volume down'
+    k = 'volume up'
+    m = ['volume set 0', 'mode main']
