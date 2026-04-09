@@ -10,3 +10,6 @@ font-thicken-strength = 100
 # MacOS
 macos-window-buttons = hidden
 macos-titlebar-style = hidden
+
+# Keybinds
+keybind = shift+enter=text:\n
