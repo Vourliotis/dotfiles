@@ -1,0 +1,39 @@
+[keys]
+prefix = "backtick"
+
+navigate_workspace_up = "k"
+navigate_workspace_down = "j"
+previous_workspace = "alt+shift+k"
+next_workspace = "alt+shift+j"
+previous_agent = "alt+k"
+next_agent = "alt+j"
+
+rename_tab = "prefix+comma"
+rename_workspace = "prefix+$"
+last_pane = "prefix+semicolon"
+
+[ui]
+prompt_new_tab_name = false
+mouse_scroll_lines = 2
+sidebar_width = 32
+pane_borders = true
+show_agent_labels_on_pane_borders = true
+agent_panel_sort = "spaces"
+
+[ui.sidebar.agents]
+rows = [
+  ["state_icon", { token = "workspace" }, { token = "tab", fg = "#ffffff", bold = false, dim = false }],
+]
+
+[ui.toast]
+delivery = "herdr"
+
+[theme]
+name = "terminal"
+auto_switch = false
+
+[advanced]
+scrollback_limit_bytes = 100000000
+
+[experimental]
+pane_history = true
