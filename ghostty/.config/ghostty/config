@@ -11,5 +11,10 @@ font-thicken-strength = 100
 macos-window-buttons = hidden
 macos-titlebar-style = hidden
 
+# Tabs
+window-theme = ghostty
+window-title-font-family = BerkeleyMono Nerd Font
+gtk-wide-tabs = false
+
 # Keybinds
 keybind = shift+enter=text:\n
