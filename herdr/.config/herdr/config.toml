@@ -14,6 +14,7 @@ last_pane = "prefix+semicolon"
 
 [ui]
 prompt_new_tab_name = false
+prompt_new_workspace_name = true
 mouse_scroll_lines = 2
 sidebar_width = 32
 pane_borders = true
