@@ -18,3 +18,5 @@ gtk-wide-tabs = false
 
 # Keybinds
 keybind = shift+enter=text:\n
+keybind = ctrl+shift+r=prompt_tab_title
+keybind = ctrl+shift+o=toggle_tab_overview
