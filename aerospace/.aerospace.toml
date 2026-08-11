@@ -24,6 +24,10 @@ default-root-container-orientation = 'auto'
     if.app-id = 'com.apple.finder'
     run = 'layout floating'
 
+[[on-window-detected]]
+    if.app-id = 'com.pais.handy'
+    run = 'layout floating'
+
 [mode.main.binding]
     # Launch
     alt-enter = 'exec-and-forget open -na ghostty'
